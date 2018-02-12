@@ -5,6 +5,7 @@ body {
 .curly-header {
   height: 40vh;
   width: 100vw;
+  max-width: 2400px;
   min-height: 400px;
   background: linear-gradient(rgba(217, 100, 134, 0.8), rgba(112, 68, 151, 0.9)),
     url(https://images.unsplash.com/photo-1509580357930-a711cf9d888d?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c254ddc22c9c2e29243ee086e9a8acd4&auto=format&fit=crop&w=2550&q=80)
@@ -15,11 +16,14 @@ body {
   padding: 0 10px;
   border-bottom-right-radius: 60%;
   filter: contrast(1.4);
+  transition: 0.5s ease;
 }
 
 .navbar {
   height: 70px;
   width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
   background-color: inherit;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
@@ -33,11 +37,17 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+.hero-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .title {
   margin: 0;
   margin-top: 30px;
   color: white;
-  /* font-size: 5vw; */
+  font-size: 45px;
 }
 
 .burger-menu {
@@ -48,19 +58,37 @@ body {
 }
 
 .burger-menu div {
-  width: 25px;
   height: 2px;
   background-color: white;
   margin: 2px 0;
+  border-radius: 5px;
+}
+
+.burger-menu div:nth-child(1) {
+  width: 20px;
+}
+
+.burger-menu div:nth-child(2) {
+  width: 30px;
+}
+.burger-menu div:nth-child(3) {
+  width: 10px;
 }
 
 .button {
+  display: block;
   padding: 0 50px;
   height: 50px;
   margin-top: 20px;
   border-radius: 40px;
   border: none;
   font-family: "Roboto", sans-serif;
+  cursor: pointer;
+  transition: 1.5s ease;
+}
+
+.button:hover {
+  transform: translateX(10px) scale(1.1);
 }
 
 .demo-button {
@@ -81,9 +109,19 @@ body {
   margin-right: 8px;
 }
 
+.content-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .content-section {
   padding: 0 20px 0 20px;
   margin-top: 40px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .content-header {
@@ -109,43 +147,125 @@ ul.list {
 }
 
 .image {
+  display: block;
+  margin: 0 auto;
   margin-top: 40px;
   width: 100%;
+  max-width: 550px;
   height: auto;
+  max-height: 347px;
   /* border-radius: 5px; */
   box-sizing: border-box;
   /* border: 10px solid s#a7b1ba; */
 }
 
+.cards {
+  display: grid;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .card {
+  transition: 0.5s ease;
   width: 320px;
   height: 300px;
   box-sizing: border-box;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   margin: 0 auto;
   margin-top: 40px;
-  border-radius: 3px;
+  border-radius: 5px;
+  border-top: 5px solid white;
   display: grid;
+  padding: 0 25px;
   grid-template-rows: 1fr 1fr 55%;
+  -webkit-box-shadow: 0px 0px 105px 8px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 0px 105px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 0px 105px 8px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transition: 0.5s ease;
+  transform: scale(1.1);
+  border-top: 5px solid rgba(112, 68, 151, 0.9);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .card-icon {
   grid-row: 1 / 2;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   color: rgb(217, 100, 134);
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .card-header {
-  padding-left: 30px;
-  font-size: 28px;
+  font-size: 40px;
+  /* font-size: 6vw; */
   color: #333;
+  /* text-align: center; */
+  margin: 0;
 }
 
 .card-body {
   margin: 0;
-  padding: 0 10px;
+  margin-top: 8px;
   font-size: 18px;
-  color: #a7b1ba;
+  color: #330;
+  line-height: 1.4;
+}
+
+@media only screen and (max-width: 540px) {
+  .title {
+    font-size: 8vw;
+  }
+}
+
+@media only screen and (min-width: 650px) and (max-width: 999px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .burger-menu {
+    display: none;
+  }
+  .title {
+    font-size: 4vw;
+  }
+
+  .curly-header {
+    border-top-right-radius: 40%;
+  }
+
+  .image {
+    margin-top: 0;
+  }
+
+  .content-header {
+    margin-top: 20%;
+  }
+
+  .content-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
+  .content-container:nth-child(odd) {
+    flex-direction: row;
+  }
+
+  .content-container:nth-child(even) {
+    flex-direction: row-reverse;
+  }
 }
